@@ -1,0 +1,13 @@
+# build folders #
+#################
+bin
+obj
+
+# mstest test results #
+#######################
+TestResults
+
+# user specific solution files #
+################################
+*.suo
+*.user
