@@ -1,0 +1,25 @@
+﻿@model Structure.Web.Models.Public.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="row">
+    <div class="well span4">
+        <h2>Login</h2>
+        @using (Html.BeginForm("Login", "Public", FormMethod.Post))
+        {
+        <fieldset>
+            <div class="clearfix">
+                @Html.LabelFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email, new { placeholder = "email" })
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+            <div class="clearfix">
+                @Html.LabelFor(x => x.Password)
+                @Html.PasswordFor(x => x.Password, new { placeholder = "password" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+            <button class="btn btn-primary" type="submit">Sign in</button>
+        </fieldset>
+        }
+    </div>
+</div>
