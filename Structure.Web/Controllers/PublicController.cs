@@ -28,7 +28,18 @@ namespace Structure.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
-            throw new NotImplementedException();
+            var response = this.ModelService.Authenticate(model.Email, model.Password);
+            if (response.HasError || response.Result == Services.LoginResult.Failed)
+            {
+                // we show the same error no matter what, so attackers do not know what to change
+                ViewBag.LoginError = "Email address or password incorrect.";
+                return View(new LoginViewModel() { Email = model.Email });
+            }
+            else
+            {
+                FormsAuthentication.SetAuthCookie(model.Email, true);
+                return this.RedirectToAction("Index", "Dashboard");
+            }
         }
 
         // GET: /public/logout

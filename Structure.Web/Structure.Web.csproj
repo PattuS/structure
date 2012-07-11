@@ -138,6 +138,10 @@
     <Content Include="Views\Public\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Structure.DataFixtures\Structure.DataFixtures.csproj">
+      <Project>{75B82EF5-3DE9-4329-8849-99E7C233A935}</Project>
+      <Name>Structure.DataFixtures</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Structure.Data\Structure.Data.csproj">
       <Project>{D884424F-01E3-400B-A864-95E20D44E830}</Project>
       <Name>Structure.Data</Name>

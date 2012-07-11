@@ -45,6 +45,16 @@ namespace Structure.Web
             RegisterRoutes(RouteTable.Routes);
 
             Bootstrapper.Initialise();
+            
+#if DEBUG
+            // enable test data for debug
+            System.Data.Entity.Database.SetInitializer<Structure.Data.ModelContext>(new Structure.DataFixtures.ModelDataInitializer());
+#else
+            // disable test data for production
+            System.Data.Entity.Database.SetInitializer<Structure.Data.ModelContext>(null);
+#endif
+
         }
+
     }
 }

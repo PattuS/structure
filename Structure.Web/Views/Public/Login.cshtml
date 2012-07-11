@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Login";
 }
+@if (ViewBag.LoginError != null)
+{
+<div class="alert alert-error">@ViewBag.LoginError</div>
+}
 <div class="row">
     <div class="well span4">
         <h2>Login</h2>

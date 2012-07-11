@@ -22,7 +22,7 @@
         /// <summary>
         /// Gets a collection of users from the data store
         /// </summary>
-        public DbSet<User> User { get; protected set; }
+        public DbSet<User> Users { get; protected set; }
 
         /// <summary>
         /// Returns a queryable interface for an entity

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structure.Data", "Structure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structure.Services", "Structure.Services\Structure.Services.csproj", "{A356DD20-B842-4AB4-A518-2313C270B5F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{E1E524FC-07A3-4A19-89E0-B3258B8872AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structure.DataFixtures", "Structure.DataFixtures\Structure.DataFixtures.csproj", "{75B82EF5-3DE9-4329-8849-99E7C233A935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,9 +35,16 @@ Global
 		{A356DD20-B842-4AB4-A518-2313C270B5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A356DD20-B842-4AB4-A518-2313C270B5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A356DD20-B842-4AB4-A518-2313C270B5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B82EF5-3DE9-4329-8849-99E7C233A935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B82EF5-3DE9-4329-8849-99E7C233A935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B82EF5-3DE9-4329-8849-99E7C233A935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B82EF5-3DE9-4329-8849-99E7C233A935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75B82EF5-3DE9-4329-8849-99E7C233A935} = {E1E524FC-07A3-4A19-89E0-B3258B8872AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35

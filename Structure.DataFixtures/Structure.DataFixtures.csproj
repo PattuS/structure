@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A356DD20-B842-4AB4-A518-2313C270B5F3}</ProjectGuid>
+    <ProjectGuid>{75B82EF5-3DE9-4329-8849-99E7C233A935}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Structure.Services</RootNamespace>
-    <AssemblyName>Structure.Services</AssemblyName>
+    <RootNamespace>Structure.DataFixtures</RootNamespace>
+    <AssemblyName>Structure.DataFixtures</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,8 +34,13 @@
     <Reference Include="DevOne.Security.Cryptography.BCrypt">
       <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,22 +48,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService.cs" />
-    <Compile Include="ILog.cs" />
-    <Compile Include="IModelContext.cs" />
-    <Compile Include="ModelService.cs" />
+    <Compile Include="ModelDataInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LoginResult.cs" />
-    <Compile Include="ServiceResponse.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Structure.Data\Structure.Data.csproj">
+      <Project>{D884424F-01E3-400B-A864-95E20D44E830}</Project>
+      <Name>Structure.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Structure.Models\Structure.Models.csproj">
       <Project>{97AFBCDF-878C-4963-9587-7B60040595B7}</Project>
       <Name>Structure.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Structure.Services\Structure.Services.csproj">
+      <Project>{A356DD20-B842-4AB4-A518-2313C270B5F3}</Project>
+      <Name>Structure.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
