@@ -1,6 +1,4 @@
-﻿
-
-namespace Structure.Models
+﻿namespace Structure.Models
 {
     using System;
 
