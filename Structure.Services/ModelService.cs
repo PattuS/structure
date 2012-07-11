@@ -13,7 +13,8 @@ namespace Structure.Services
         /// Constructs a new instance of <see cref="ModelService"/>
         /// </summary>
         /// <param name="context">An instance of an <see cref="IModelContext"/></param>
-        public ModelService(IModelContext context, ILogger logger) : base(logger)
+        /// <param name="log">An instance of an <see cref="ILog"/></param>
+        public ModelService(IModelContext context, ILog log) : base(log)
         {
             this.context = context;
         }

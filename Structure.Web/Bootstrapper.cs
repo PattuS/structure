@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
 
-namespace Structure
+namespace Structure.Web
 {
     public static class Bootstrapper
     {
@@ -17,6 +17,7 @@ namespace Structure
         {
             var container = new UnityContainer();
 
+            container.RegisterType<Structure.Services.ILog, Structure.Web.Components.Logging.NLogger>();
             container.RegisterType<Structure.Services.IModelContext, Structure.Data.ModelContext>();
             container.RegisterType<Structure.Services.ModelService, Structure.Services.ModelService>();
 

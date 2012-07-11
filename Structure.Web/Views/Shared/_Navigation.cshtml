@@ -1,0 +1,31 @@
+﻿<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            @if (User.Identity.IsAuthenticated)
+            {
+            <ul class="nav">
+                <li @selected("Dashboard")><a href="/dashboard">Dashboard</a></li>
+                <li @selected("Clients")><a href="/clients">Clients</a></li>
+                <li @selected("Users")><a href="/users">Users</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                <li><a href="/account">@User.Identity.Name</a></li>
+                <li><a href="/public/logout">logout</a></li>
+            </ul>
+            }
+            else
+            {
+            <ul class="nav">
+                <li class="pull-right"><a href="/login">Login</a></li>
+            </ul>
+            }
+        </div>
+    </div>
+</div>
+@helper selected(string title)
+{
+    if (ViewBag.Title == title)
+    {
+    <text>class="active"</text>   
+    }
+}

@@ -17,7 +17,7 @@ namespace Structure.Controllers
         /// Gets or sets the Logger for application logging
         /// </summary>
         [Microsoft.Practices.Unity.Dependency]
-        public Structure.Services.ILogger Logger { get; set; }
+        public Structure.Services.ILog Logger { get; set; }
 
         /// <summary>
         /// Gets or sets the ModelService for business operations

@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
-    <Compile Include="ILogger.cs" />
+    <Compile Include="ILog.cs" />
     <Compile Include="IModelContext.cs" />
     <Compile Include="ModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

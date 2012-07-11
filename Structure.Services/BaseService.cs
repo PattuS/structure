@@ -7,11 +7,11 @@ namespace Structure.Services
 {
     public class BaseService
     {
-        protected ILogger logger;
+        protected ILog log;
 
-        public BaseService(ILogger logger)
+        public BaseService(ILog log)
         {
-            this.logger = logger;
+            this.log = log;
         }
         
         /// <summary>
@@ -31,7 +31,7 @@ namespace Structure.Services
             }
             catch (Exception ex)
             {
-                logger.Error("Structure.Services.Exception", ex);
+                log.Error(ex.ToString(), ex);
                 response.Result = default(T);
                 response.HasError = true;
                 response.Exception = ex;
