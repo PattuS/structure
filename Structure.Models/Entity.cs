@@ -24,7 +24,18 @@
         /// <summary>
         /// Gets or sets the Created Date of this <see cref="Entity"/>
         /// </summary>
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; protected set; }
+
+        /// <summary>
+        /// Returns true if the primary key and createddate match
+        /// </summary>
+        /// <param name="other">The entity to compare</param>
+        /// <returns><see cref="bool"/></returns>
+        public bool Equals(Entity other)
+        {
+            return (this.Id == other.Id
+                && this.CreatedDate == other.CreatedDate);
+        }
 
     }
 }

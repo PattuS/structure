@@ -21,6 +21,7 @@ namespace Structure.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            ViewBag.Users = this.ModelService.GetAllUsers().Result;
             return View(new LoginViewModel());
         }
 

@@ -17,12 +17,12 @@
         /// <summary>
         /// Gets a collection of clients from the data store
         /// </summary>
-        public DbSet<Client> Clients { get; protected set; }
+        public DbSet<Client> Clients { get; set; }
 
         /// <summary>
         /// Gets a collection of users from the data store
         /// </summary>
-        public DbSet<User> Users { get; protected set; }
+        public DbSet<User> Users { get; set; }
 
         /// <summary>
         /// Returns a queryable interface for an entity
@@ -82,6 +82,27 @@
 
             this.Set<T>().Remove(entity);
             return this.SaveChanges() > 0;
+        }
+
+        /// <summary>
+        /// Persists changes to the data store
+        /// </summary>
+        /// <typeparam name="T">The entity type</typeparam>
+        /// <param name="entity">The entity</param>
+        /// <returns>The updated entity</returns>
+        public T Save<T>(T entity) where T : Entity
+        {
+            if (entity.Id > 0)
+            {
+                this.Entry(entity).State = System.Data.EntityState.Modified;
+                entity.ChangedDate = DateTime.Now;
+            }
+            else
+            {
+                this.Set<T>().Add(entity);
+            }
+            this.SaveChanges();
+            return entity;
         }
 
     }

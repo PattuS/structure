@@ -12,5 +12,6 @@ namespace Structure.Services
         bool Delete<T>(T entity) where T : Structure.Models.Entity;
         T Find<T>(int id) where T : Structure.Models.Entity;
         T Get<T>(int id) where T : Structure.Models.Entity;
+        T Save<T>(T entity) where T : Structure.Models.Entity;
     }
 }

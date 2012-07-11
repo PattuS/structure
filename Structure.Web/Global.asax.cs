@@ -44,8 +44,6 @@ namespace Structure.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            Bootstrapper.Initialise();
-            
 #if DEBUG
             // enable test data for debug
             System.Data.Entity.Database.SetInitializer<Structure.Data.ModelContext>(new Structure.DataFixtures.ModelDataInitializer());
@@ -53,6 +51,8 @@ namespace Structure.Web
             // disable test data for production
             System.Data.Entity.Database.SetInitializer<Structure.Data.ModelContext>(null);
 #endif
+
+            Bootstrapper.Initialise();
 
         }
 

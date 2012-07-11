@@ -45,5 +45,18 @@ namespace Structure.Services
             return this.Execute(func);
         }
 
+        /// <summary>
+        /// Returns a list of all users in the system
+        /// </summary>
+        /// <returns></returns>
+        public ServiceResponse<IList<User>> GetAllUsers()
+        {
+            Func<IList<User>> func = delegate
+            {
+                return this.context.AsQueryable<User>().ToList();
+            };
+            return this.Execute(func);
+        }
+
     }
 }

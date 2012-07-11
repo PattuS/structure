@@ -13,7 +13,8 @@ namespace Structure.DataFixtures
             // add a test user
             context.Users.Add(new Models.User()
             {
-                Email = "admin@structure.com",
+                Name = "Administrator",
+                Email = "admin@structure.org",
                 PasswordHash = DevOne.Security.Cryptography.BCrypt.BCryptHelper.HashPassword("password", DevOne.Security.Cryptography.BCrypt.BCryptHelper.GenerateSalt())
             });
 
