@@ -10,7 +10,7 @@ namespace Structure.DataFixtures
     {
         protected override void Seed(ModelContext context)
         {
-            // add a test user
+            // add some test users
             context.Users.Add(new Models.User()
             {
                 Name = "Administrator",

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Structure.Controllers
+namespace Structure.Web.Controllers
 {
     /// <summary>
     /// Common controller methods and properties for all controllers

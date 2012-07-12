@@ -1,0 +1,18 @@
+﻿@model Structure.Web.Models.Dashboard.DashboardViewModel
+@{
+    ViewBag.Title = "Dashboard";
+}
+<div class="page-header">
+    <h1>Dashboard</h1>
+    <p>Now that your logged in, lets take a look at the following:</p>
+</div>
+<div class="row">
+    <div class="span6">
+        <h2>Clients</h2>
+        @{Html.RenderPartial("~/Views/Clients/_List.cshtml", Model.Clients);}
+    </div>
+    <div class="span6">
+        <h2>Users</h2>
+        @{Html.RenderPartial("~/Views/Users/_List.cshtml", Model.Users);}
+    </div>
+</div>

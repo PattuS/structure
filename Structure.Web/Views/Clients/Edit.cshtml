@@ -1,0 +1,18 @@
+﻿@model Structure.Web.Models.Clients.EditViewModel
+@{
+    ViewBag.Title = "Clients";
+}
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Clients", FormMethod.Post, new { @class = "well" }))
+{
+    @Html.HiddenFor(x => x.Client.Id)
+
+    @Html.LabelFor(x => x.Client.Name)
+    @Html.EditorFor(x => x.Client.Name)
+    @Html.ValidationMessageFor(x => x.Client.Name)
+
+    <div class="pull-right">
+        <a href="/clients" class="btn">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}

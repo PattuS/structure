@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Structure.Web.Models.Public;
 
-namespace Structure.Controllers
+namespace Structure.Web.Controllers
 {
     public class PublicController : BaseController
     {
@@ -21,6 +21,9 @@ namespace Structure.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+                return this.RedirectToAction("Index", "Dashboard");
+
             ViewBag.Users = this.ModelService.GetAllUsers().Result;
             return View(new LoginViewModel());
         }

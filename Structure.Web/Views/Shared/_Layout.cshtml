@@ -7,8 +7,9 @@
     <link href="@Url.Content("~/Content/css/theme.css.less")" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    @Html.Partial("_Navigation")
     <div class="container">
-        @Html.Partial("_Navigation")
+        @Html.Partial("_Messages")
         @RenderBody()
     </div>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")"></script>
