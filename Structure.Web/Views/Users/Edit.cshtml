@@ -1,0 +1,28 @@
+﻿@model Structure.Web.Models.Users.EditViewModel
+@{
+    ViewBag.Title = "Users";
+}
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { @class = "well" }))
+{
+    @Html.HiddenFor(x => x.User.Id)
+    @Html.LabelFor(x => x.User.Name)
+    @Html.EditorFor(x => x.User.Name)
+    @Html.ValidationMessageFor(x => x.User.Name)
+
+    @Html.LabelFor(x => x.User.Email)
+    @Html.EditorFor(x => x.User.Email)
+    @Html.ValidationMessageFor(x => x.User.Email)
+
+    <div class="pull-right">
+        <a href="/users" class="btn">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $('#User_Name').focus();
+    });
+</script>
+}

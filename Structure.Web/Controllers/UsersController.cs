@@ -46,13 +46,31 @@ namespace Structure.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Delete(int id)
+        [HttpPost] // POST: /users/edit
+        public ActionResult Edit(EditViewModel model)
         {
-            var response = this.ModelService.GetUser(id);
-            var user = response.Result;
+            var response = this.ModelService.SaveUser(model.User);
+            if (response.HasError)
+            {
+                TempData["Error"] = "Could not save user.";
+                return View(model);
+            }
 
+            TempData["Success"] = model.User.Name + " was successfully saved.";
             return this.RedirectToAction("Index");
         }
 
+        [HttpPost] // POST: /users/{id}/delete
+        public ActionResult Delete(int id)
+        {
+            var response = this.ModelService.DeleteUser(id);
+            if (response.HasError)
+            {
+                TempData["Error"] = "Could not delete user.";
+            }
+
+            TempData["Success"] = "User was successfully deleted.";
+            return this.RedirectToAction("Index");
+        }
     }
 }

@@ -112,5 +112,47 @@ namespace Structure.Services
             };
             return this.Execute(func);
         }
+
+        /// <summary>
+        /// Persists changes to the data store
+        /// </summary>
+        /// <param name="entity">User</param>
+        /// <returns><see cref="User"/></returns>
+        public ServiceResponse<User> SaveUser(User entity)
+        {
+            Func<User> func = delegate
+            {
+                return this.context.Save(entity);
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
+        /// Deletes a client from the data store
+        /// </summary>
+        /// <param name="entity">Client</param>
+        /// <returns><see cref="bool"/></returns>
+        public ServiceResponse<bool> DeleteClient(int id)
+        {
+            Func<bool> func = delegate
+            {
+                return this.context.Delete<Client>(id);
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
+        /// Deletes a user from the data store
+        /// </summary>
+        /// <param name="entity">User</param>
+        /// <returns><see cref="bool"/></returns>
+        public ServiceResponse<bool> DeleteUser(int id)
+        {
+            Func<bool> func = delegate
+            {
+                return this.context.Delete<User>(id);
+            };
+            return this.Execute(func);
+        }
     }
 }

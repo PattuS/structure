@@ -13,10 +13,11 @@
             <tr>
                 <td>@client.Name
                 </td>
-                <td>@Html.ActionLink("edit", "Edit", "Client")
+                <td>
+                    <a href="/clients/@client.Id/edit">edit</a>
                 </td>
                 <td>
-                    @using (Html.BeginForm("Delete", "Client", FormMethod.Post))
+                    @using (Html.BeginForm("Delete", "Clients", FormMethod.Post))
                     {
                         @Html.Hidden("id", client.Id)
                         <a href="#" onclick="$(this).closest('form').submit();return false;">delete</a>

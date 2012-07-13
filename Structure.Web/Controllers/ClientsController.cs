@@ -59,11 +59,16 @@ namespace Structure.Web.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [HttpPost] // POST: /clients/{id}/delete
         public ActionResult Delete(int id)
         {
-            var response = this.ModelService.GetClient(id);
-            var client = response.Result;
+            var response = this.ModelService.DeleteClient(id);
+            if (response.HasError)
+            {
+                TempData["Error"] = "Could not delete client.";
+            }
 
+            TempData["Success"] = "Client was successfully deleted.";
             return this.RedirectToAction("Index");
         }
 
