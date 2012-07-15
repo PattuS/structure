@@ -7,6 +7,7 @@ using Structure.Web.Models.Users;
 
 namespace Structure.Web.Controllers
 {
+    [Authorize]
     public class UsersController : BaseController
     {
 
@@ -72,5 +73,16 @@ namespace Structure.Web.Controllers
             TempData["Success"] = "User was successfully deleted.";
             return this.RedirectToAction("Index");
         }
+
+        [HttpPost] // POST: /users/changepassword
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            var response = this.ModelService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+            if (response.HasError)
+                return this.JsonResult(false, response.Exception.ToString());
+
+            return this.JsonResult(true);
+        }
+
     }
 }

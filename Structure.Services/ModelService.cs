@@ -86,6 +86,24 @@ namespace Structure.Services
         }
 
         /// <summary>
+        /// Returns a user for the given id
+        /// </summary>
+        /// <param name="id">User id</param>
+        /// <returns><see cref="User"/></returns>
+        public ServiceResponse<User> GetUser(string email)
+        {
+            Func<User> func = delegate
+            {
+                var user = this.context.AsQueryable<User>().FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
+                if (user == null)
+                    throw new ArgumentOutOfRangeException("Email address not found");
+
+                return user;
+            };
+            return this.Execute(func);
+        }
+
+        /// <summary>
         /// Returns a client for the given id
         /// </summary>
         /// <param name="id">Client id</param>
@@ -165,7 +183,7 @@ namespace Structure.Services
             Func<string> func = delegate
             {
                 // lookup password
-                var user = this.context.AsQueryable<User>().FirstOrDefault(x => x.Email == email);
+                var user = this.context.AsQueryable<User>().FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
                 if (user == null)
                     throw new ArgumentOutOfRangeException("Email address not found");
 
@@ -189,7 +207,7 @@ namespace Structure.Services
             Func<User> func = delegate
             {
                 // lookup user
-                var user = this.context.AsQueryable<User>().FirstOrDefault(x => x.Email == email);
+                var user = this.context.AsQueryable<User>().FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
                 if (user == null)
                     throw new ArgumentOutOfRangeException("Email address not found");
 

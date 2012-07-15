@@ -7,6 +7,7 @@ using Structure.Web.Models.Clients;
 
 namespace Structure.Web.Controllers
 {
+    [Authorize]
     public class ClientsController : BaseController
     {
 

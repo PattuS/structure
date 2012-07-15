@@ -16,7 +16,7 @@
         /// <summary>
         /// Gets the exception that was thrown, if any
         /// </summary>
-        public object Exception { get; internal set; }
+        public Exception Exception { get; internal set; }
 
         /// <summary>
         /// Gets the result of the service call
