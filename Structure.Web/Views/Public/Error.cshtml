@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Error";
+}
+<header class="hero-unit">
+  <h1>Error</h1>
+  <p>An unknown error has occured.</p>
+  @if (TempData["Error"] != null)
+  {
+  <p>@TempData["Error"]</p>
+  }
+  @if (TempData["Exception"] != null)
+  {
+  <p>@TempData["Exception"]</p>
+  }
+  <p>
+    <a class="btn btn-primary btn-large" href="/">
+      Return Home
+    </a>
+  </p>
+</header>

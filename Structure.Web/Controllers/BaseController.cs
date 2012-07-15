@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Structure.Web.Controllers
+﻿namespace Structure.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+
     /// <summary>
     /// Common controller methods and properties for all controllers
     /// </summary>
@@ -24,6 +24,22 @@ namespace Structure.Web.Controllers
         /// </summary>
         [Microsoft.Practices.Unity.Dependency]
         public Structure.Services.ModelService ModelService { get; set; }
+
+        /// <summary>
+        /// Redirect the user to an error page
+        /// </summary>
+        /// <param name="message">The user friendly message to display to the user</param>
+        /// <param name="exception">The exception, only shown while in debug mode</param>
+        /// <returns><see cref="ActionResult"/></returns>
+        public ActionResult RedirectToError(string message, Exception exception)
+        {
+            TempData["Error"] = message;
+#if DEBUG
+            TempData["Exception"] = exception.ToString();
+#endif
+            return this.Redirect("/public/error");
+        }
+
 
     }
 }

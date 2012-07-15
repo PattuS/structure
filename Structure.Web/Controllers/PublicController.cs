@@ -10,15 +10,14 @@ namespace Structure.Web.Controllers
 {
     public class PublicController : BaseController
     {
-        // GET: /
-        [HttpGet]
+        
+        [HttpGet] // GET: /
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: /public/login
-        [HttpGet]
+        [HttpGet] // GET: /public/login
         public ActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -28,8 +27,7 @@ namespace Structure.Web.Controllers
             return View(new LoginViewModel());
         }
 
-        // POST: /public/login
-        [HttpPost]
+        [HttpPost] // POST: /public/login
         public ActionResult Login(LoginViewModel model)
         {
             var response = this.ModelService.Authenticate(model.Email, model.Password);
@@ -46,11 +44,40 @@ namespace Structure.Web.Controllers
             }
         }
 
-        // GET: /public/logout
+        [HttpGet] // GET/POST: /public/logout
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return this.RedirectToAction("Index");
+        }
+
+        [HttpGet] // GET: /public/resetpassword
+        public ActionResult ResetPassword()
+        {
+            return PartialView();
+        }
+
+        [HttpPost] // POST: /public/resetpassword
+        public ActionResult ResetPassword(string email)
+        {
+            var response = this.Service.ResetPassword(email);
+            if (response.HasError)
+            {
+                TempData["LoginError"] = response.Exception.Message;
+            }
+            else
+            {
+                TempData["LoginMessage"] = "An email containing a new password has been sent to " + email;
+            }
+
+
+            return this.RedirectToAction("Login");
+        }
+
+        [HttpGet, HttpPost] // GET/POST: /public/error
+        public ActionResult Error()
+        {
+            return View();
         }
 
     }
