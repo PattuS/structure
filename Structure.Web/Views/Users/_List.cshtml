@@ -6,17 +6,24 @@
             <th>Email</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var user in Model)
         {
             <tr>
-                <td>@user.Name
+                <td>
+                    @user.Name
                 </td>
-                <td>@user.Email
+                <td>
+                    @user.Email
                 </td>
-                <td><a href="/users/@user.Id/edit">edit</a>
+                <td>
+                    <a href="/users/@user.Id/changepassword" class="dialog">change password</a>
+                </td>
+                <td>
+                    <a href="/users/@user.Id/edit">edit</a>
                 </td>
                 <td>
                     @using (Html.BeginForm("Delete", "Users", FormMethod.Post, new { @class = "form-inline" }))
