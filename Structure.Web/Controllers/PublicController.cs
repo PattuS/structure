@@ -60,17 +60,12 @@ namespace Structure.Web.Controllers
         [HttpPost] // POST: /public/resetpassword
         public ActionResult ResetPassword(string email)
         {
-            var response = this.Service.ResetPassword(email);
+            var response = this.ModelService.ResetPassword(email);
             if (response.HasError)
-            {
-                TempData["LoginError"] = response.Exception.Message;
-            }
+                TempData["LoginError"] = response.Exception;
             else
-            {
                 TempData["LoginMessage"] = "An email containing a new password has been sent to " + email;
-            }
-
-
+        
             return this.RedirectToAction("Login");
         }
 

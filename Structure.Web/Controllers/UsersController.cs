@@ -15,7 +15,7 @@ namespace Structure.Web.Controllers
         {
             var userResponse = this.ModelService.GetAllUsers();
             var users = userResponse.Result;
-            throw new Exception("fuck that");
+            
             var model = new ListViewModel()
             {
                 Users = users
