@@ -74,6 +74,12 @@ namespace Structure.Web.Controllers
             return this.RedirectToAction("Index");
         }
 
+        [HttpGet] // GET: /users/changepassword
+        public ActionResult ChangePassword()
+        {
+            return PartialView("_ChangePassword", new ChangePasswordViewModel());
+        }
+
         [HttpPost] // POST: /users/changepassword
         public ActionResult ChangePassword(ChangePasswordViewModel model)
         {

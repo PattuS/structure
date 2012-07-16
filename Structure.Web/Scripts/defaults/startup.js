@@ -13,10 +13,10 @@ $(function () {
     });
 
     // modal dialog links
-    $(document).on('click', '.dialog', function (e) {
+    $(document).on('click', 'a.dialog, button.dialog', function (e) {
         e.preventDefault();
         var href = $(this).attr('href');
-        Structure.Dialog(href);
+        Structure.Dialogs.Modal(href);
     });
 
 });
