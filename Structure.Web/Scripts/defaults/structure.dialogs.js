@@ -1,9 +1,10 @@
-﻿Structure.Dialogs = Structure.Dialogs || {};
+﻿// common dialogs using bootstrap
+Structure.Dialogs = (function ($, window, document, undefined) {
 
-(Structure.Dialogs = function () {
-    
     return {
-        Alert: function(msg){
+
+        // alert replacement for 
+        Alert: function (msg) {
             var k = '<div class="modal">';
             k += '<div class="modal-header"><button class="close" data-dismiss="modal">×</button><h3>Alert</h3></div>';
             k += '<div class="modal-body"><p>' + msg + '</p></div>';
@@ -15,7 +16,8 @@
             });
         },
 
-        Confirm: function(msg, callback){
+        // confirm replacement
+        Confirm: function (msg, callback) {
             var k = '<div class="modal" style="display:none;">';
             k += '<div class="modal-header"><h3>Confirm</h3></div>';
             k += '<div class="modal-body"><p>' + msg + '</p></div>';
@@ -38,6 +40,7 @@
             });
         },
 
+        // modal dialogs
         Modal: function (href) {
             if (href.indexOf('#') == 0) {
                 $(href).modal();
@@ -55,4 +58,4 @@
         }
     };
 
-})();
+})(jQuery, this, document);
