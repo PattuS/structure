@@ -1,22 +1,24 @@
-﻿// shared startup code
-$(function () {
+﻿// script loader
+; (function (ns, undefined) {
 
-    // disable ajax caching, wire up callbacks
-    $.ajaxSetup({
-        cache: false,
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            return false;
-        },
-        success: function (data, textStatus, XMLHttpRequest) {
-            return false;
+    ns.loader = ns.loader || {};
+    ns.loader.exec = function (controller, action) {
+        var action = (action === undefined) ? "init" : action;
+
+        if (controller !== '' && ns[controller] && typeof ns[controller][action] === "function") {
+            ns[controller][action]();
         }
+    };
+
+    // load each startup script for the page
+    $(function () {
+        var body = document.body,
+            controller = body.getAttribute("data-controller"),
+            action = body.getAttribute("data-action");
+
+        ns.loader.exec("common");
+        ns.loader.exec(controller);
+        ns.loader.exec(controller, action);
     });
 
-    // modal dialog links
-    $(document).on('click', 'a.dialog, button.dialog', function (e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        Structure.Dialogs.Modal(href);
-    });
-
-});
+})(Structure);

@@ -1,7 +1,10 @@
 ﻿@model Structure.Web.Models.Clients.ListViewModel
 @{
     ViewBag.Title = "Clients";
+    ViewBag.Controller = "clients";
+    ViewBag.Action = "show";
 }
+@Html.RequireScript("/scripts/views/clients.js")
 <div class="row">
     <div class="span12">
         <h2>Clients</h2>

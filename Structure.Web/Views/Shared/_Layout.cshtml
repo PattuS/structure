@@ -6,7 +6,7 @@
     <link href="@Url.Content("~/Content/css/bootstrap/bootstrap.min.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/css/theme.css.less")" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body data-controller="@ViewBag.Controller" data-action="@ViewBag.Action">
     @Html.Partial("_Navigation")
     <div class="container">
         @Html.Partial("_Messages")

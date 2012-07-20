@@ -1,0 +1,6 @@
+2012-07-19 20:00:07.6425 ERROR System.Exception: No user found at admin@omniresources.com
+   at Structure.Services.ModelService.<>c__DisplayClass1.<Authenticate>b__0() in C:\Users\carbon\Projects\carbonrobot\structure\Structure.Services\ModelService.cs:line 36
+   at Structure.Services.BaseService.Execute[T](Func`1 func) in C:\Users\carbon\Projects\carbonrobot\structure\Structure.Services\BaseService.cs:line 28
+2012-07-19 20:00:13.2888 ERROR System.Exception: No user found at admin@omniresources.com
+   at Structure.Services.ModelService.<>c__DisplayClass1.<Authenticate>b__0() in C:\Users\carbon\Projects\carbonrobot\structure\Structure.Services\ModelService.cs:line 36
+   at Structure.Services.BaseService.Execute[T](Func`1 func) in C:\Users\carbon\Projects\carbonrobot\structure\Structure.Services\BaseService.cs:line 28

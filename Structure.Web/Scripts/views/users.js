@@ -1,16 +1,15 @@
-﻿// clients
+﻿// users
 ; (function (ns, window, document, undefined) {
 
-    ns.clients = (function(){
+    ns.users = (function(){
 
         return {
             init: function () {
-                console.log("clients.init");
-                $('#Client_Name').focus();
+                console.log("users.init");
             },
 
             show: function () {
-                console.log("clients.show");
+                console.log("users.show");
             }
         };
 
