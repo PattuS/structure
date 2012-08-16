@@ -1,4 +1,13 @@
-﻿// script loader
+﻿/*
+* Application script router
+* Usage: Place data-attributes on the body tag to call a specific startup script
+*        Example:
+*        <body data-controller="Namespace.scriptController" data-action="init">
+*        Once the page has completed loading, the "init" method of the "scriptController" will be fired.
+*        This is very useful for page scripts
+*
+* Based on methods by Paul Irish
+*/
 ; (function (ns, undefined) {
 
     ns.loader = ns.loader || {};

@@ -1,4 +1,7 @@
-﻿// common dialogs using bootstrap
+﻿/*
+* Dialog infrastructure
+*
+*/
 ; (function (ns, window, document, undefined) {
 
     ns.dialogs = (function(){
@@ -61,7 +64,15 @@
                                 $(this).remove();
                             });
 
-                        $modal.modal();
+                        $modal.modal({
+                            backdrop: true,
+                            keyboard: true
+                        }).css({
+                            width: 'auto',
+                            'margin-left': function () {
+                                return -($(this).width() / 2);
+                            }
+                        });
                         ns.common.unblock();
                     });
                 }

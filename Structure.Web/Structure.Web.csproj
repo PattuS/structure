@@ -115,8 +115,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\defaults\structure.default.js" />
-    <Content Include="Scripts\defaults\structure.dialogs.js" />
+    <Content Include="Scripts\defaults\default.js" />
+    <Content Include="Scripts\defaults\dialogs.js" />
+    <Content Include="Scripts\defaults\forms.js" />
     <Content Include="Scripts\defaults\startup.js" />
     <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />

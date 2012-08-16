@@ -1,6 +1,9 @@
-﻿// application namespace
+﻿/* 
+* Default application and namespace
+*
+*/
 var Structure = Structure || {};
-; (function (ns, window, document, undefined) {
+;  (function (ns, window, document, undefined) {
 
     ns.common = (function(){
 
@@ -17,7 +20,7 @@ var Structure = Structure || {};
                 $(document).on('click', 'a.dialog, button.dialog', function (e) {
                     e.preventDefault();
                     var href = $(this).attr('href');
-                    Structure.dialogs.modal(href);
+                    ns.dialogs.modal(href);
                 });
 
                 console.log("common.init");
