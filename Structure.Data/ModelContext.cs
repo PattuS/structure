@@ -29,9 +29,15 @@
         /// </summary>
         /// <typeparam name="T">The entity type</typeparam>
         /// <returns><see cref="IQueryable"/></returns>
-        public IQueryable<T> AsQueryable<T>() where T : Entity
+        public IQueryable<T> AsQueryable<T>(params string[] includes) where T : Entity
         {
-            return this.Set<T>().AsQueryable();
+            var query = this.Set<T>().AsQueryable();
+            
+            if(includes != null)
+                foreach (var include in includes)
+                    query = query.Include(include);
+            
+            return query;
         }
 
         /// <summary>
@@ -40,9 +46,12 @@
         /// <typeparam name="T">The entity type</typeparam>
         /// <param name="id">The entity key</param>
         /// <returns><see cref="Entity"/></returns>
-        public T Get<T>(int id) where T : Entity
+        public T Get<T>(int id, params string[] includes) where T : Entity
         {
-            return this.Set<T>().Single(x => x.Id == id);
+            if (includes == null)
+                return this.Set<T>().Single(x => x.Id == id);
+            else
+                return this.AsQueryable<T>(includes).Single(x => x.Id == id);
         }
 
         /// <summary>
@@ -51,9 +60,12 @@
         /// <typeparam name="T">The entity type</typeparam>
         /// <param name="id">The entity key</param>
         /// <returns><see cref="Entity"/></returns>
-        public T Find<T>(int id) where T : Entity
+        public T Find<T>(int id, params string[] includes) where T : Entity
         {
-            return this.Set<T>().Find(id);
+            if (includes == null)
+                return this.Set<T>().Find(id);
+            else
+                return this.AsQueryable<T>(includes).SingleOrDefault(x => x.Id == id);
         }
 
         /// <summary>
