@@ -15,7 +15,7 @@ namespace Structure.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var userResponse = this.ModelService.GetAllUsers();
+            var userResponse = this.UserService.GetAllUsers();
             var users = userResponse.Result;
 
             var clientResponse = this.ModelService.GetAllClients();

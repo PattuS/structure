@@ -28,6 +28,12 @@
         public Structure.Services.ModelService ModelService { get; set; }
 
         /// <summary>
+        /// Gets or sets the ModelService for business operations
+        /// </summary>
+        [Microsoft.Practices.Unity.Dependency]
+        public Structure.Services.UserService UserService { get; set; }
+
+        /// <summary>
         /// Redirect the user to an error page
         /// </summary>
         /// <param name="message">The user friendly message to display to the user</param>
@@ -40,31 +46,6 @@
             TempData["Exception"] = exception.ToString();
 #endif
             return this.Redirect("/public/error");
-        }
-
-        /// <summary>
-        /// Gets the currently logged in user
-        /// </summary>
-        protected Structure.Models.User ActiveUser
-        {
-            get
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    var user = (Structure.Models.User)Session["ActiveUser"];
-                    if (user == null)
-                    {
-                        user = this.ModelService.GetUser(User.Identity.Name).Result;
-                        Session["ActiveUser"] = user;
-                    }
-                    return user;
-                }
-                return null;
-            }
-            private set
-            {
-                Session["ActiveUser"] = value;
-            }
         }
 
         /// <summary>
@@ -107,25 +88,6 @@
             TempData["Error"] = exception.Message;
             return this.RedirectToAction("Error", "Public");
         }
-
-        /// <summary>
-        /// Login an authenticated user
-        /// </summary>
-        /// <param name="user"></param>
-        protected void BeginSession(Structure.Models.User user, bool persistLogin = true)
-        {
-            FormsAuthentication.SetAuthCookie(user.Email, persistLogin);
-            this.ActiveUser = user;
-        }
-
-        /// <summary>
-        /// Logout the current user and clear the session
-        /// </summary>
-        protected void EndSession()
-        {
-            FormsAuthentication.SignOut();
-            Session.Clear();
-        }
-
+       
     }
 }

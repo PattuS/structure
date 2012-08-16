@@ -14,7 +14,7 @@ namespace Structure.Web.Controllers
         [HttpGet] // GET: /Users/
         public ActionResult Index()
         {
-            var userResponse = this.ModelService.GetAllUsers();
+            var userResponse = this.UserService.GetAllUsers();
             var users = userResponse.Result;
             
             var model = new ListViewModel()
@@ -37,7 +37,7 @@ namespace Structure.Web.Controllers
         [HttpGet] // GET: /users/{id}/edit
         public ActionResult Edit(int id)
         {
-            var response = this.ModelService.GetUser(id);
+            var response = this.UserService.GetUser(id);
             var user = response.Result;
 
             var model = new EditViewModel()
@@ -50,7 +50,7 @@ namespace Structure.Web.Controllers
         [HttpPost] // POST: /users/edit
         public ActionResult Edit(EditViewModel model)
         {
-            var response = this.ModelService.SaveUser(model.User);
+            var response = this.UserService.SaveUser(model.User);
             if (response.HasError)
             {
                 TempData["Error"] = "Could not save user.";
@@ -64,7 +64,7 @@ namespace Structure.Web.Controllers
         [HttpPost] // POST: /users/{id}/delete
         public ActionResult Delete(int id)
         {
-            var response = this.ModelService.DeleteUser(id);
+            var response = this.UserService.DeleteUser(id);
             if (response.HasError)
             {
                 TempData["Error"] = "Could not delete user.";
@@ -83,7 +83,7 @@ namespace Structure.Web.Controllers
         [HttpPost] // POST: /users/changepassword
         public ActionResult ChangePassword(ChangePasswordViewModel model)
         {
-            var response = this.ModelService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+            var response = this.UserService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
             if (response.HasError)
                 return this.JsonResult(false, response.Exception.ToString());
 

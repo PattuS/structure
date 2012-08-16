@@ -7,10 +7,12 @@ namespace Structure.Services
 {
     public class BaseService
     {
+        protected IModelContext context;
         protected ILog log;
 
-        public BaseService(ILog log)
+        public BaseService(IModelContext context, ILog log)
         {
+            this.context = context;
             this.log = log;
         }
         

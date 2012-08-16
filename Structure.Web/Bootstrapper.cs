@@ -20,6 +20,7 @@ namespace Structure.Web
             container.RegisterType<Structure.Services.ILog, Structure.Web.Components.Logging.NLogger>();
             container.RegisterType<Structure.Services.IModelContext, Structure.Data.ModelContext>();
             container.RegisterType<Structure.Services.ModelService, Structure.Services.ModelService>();
+            container.RegisterType<Structure.Services.UserService, Structure.Services.UserService>();
 
             return container;
         }

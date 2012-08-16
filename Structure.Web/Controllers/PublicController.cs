@@ -23,14 +23,14 @@ namespace Structure.Web.Controllers
             if (User.Identity.IsAuthenticated)
                 return this.RedirectToAction("Index", "Dashboard");
 
-            ViewBag.Users = this.ModelService.GetAllUsers().Result;
+            ViewBag.Users = this.UserService.GetAllUsers().Result;
             return View(new LoginViewModel());
         }
 
         [HttpPost] // POST: /public/login
         public ActionResult Login(LoginViewModel model)
         {
-            var response = this.ModelService.Authenticate(model.Email, model.Password);
+            var response = this.UserService.Authenticate(model.Email, model.Password);
             if (response.HasError || response.Result == Services.LoginResult.Failed)
             {
                 // we show the same error no matter what, so attackers do not know what to change
@@ -60,7 +60,7 @@ namespace Structure.Web.Controllers
         [HttpPost] // POST: /public/resetpassword
         public ActionResult ResetPassword(string email)
         {
-            var response = this.ModelService.ResetPassword(email);
+            var response = this.UserService.ResetPassword(email);
             if (response.HasError)
                 TempData["LoginError"] = response.Exception;
             else
